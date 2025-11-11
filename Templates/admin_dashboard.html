@@ -18,7 +18,36 @@
 				<div class="cate_actions">
 					<a href ="{{url_for('edit_category',curr_login_id=data.curr_login_id,category_id=category.id)}}" class="edit_category">Edit</a> 
 					<a href ="{{url_for('remove_category',curr_login_id=data.curr_login_id,category_id=category.id)}}" class="remove_category">Remove</a>
+					<a href ="{{url_for('create_product',curr_login_id=data.curr_login_id,category_id=category.id)}}" class="add_product">Add Product</a>
+
 				</div>
+				<table class="prod_table">
+					<tr>
+						<th>Product</th>
+						<th>Price</th>
+						<th>Unit</th>
+						<th>Quantity</th>
+						<th>Mf Date</th>
+						<th>Expiry Date</th>
+						<th>Actions</th>
+					</tr>
+					{%for product in category.products%}
+					<tr>
+						<td class="prod_name">{{product.name}}</td>
+						<td class="prod_name">{{product.price}}</td>
+						<td class="prod_name">{{product.unit}}</td>
+						<td class="prod_name">{{product.quantity}}</td>
+						<td class="prod_name">{{product.mf_date}}</td>
+						<td class="prod_name">{{product.expiry_date}}</td>
+						<td>
+							<a href ="{{url_for('edit_product',curr_login_id=data.curr_login_id,product_id=product.id)}}" 
+							class="edit_category">Edit</a> 
+							<a href ="{{url_for('remove_product',curr_login_id=data.curr_login_id,product_id=product.id)}}" 
+							class="remove_category">Remove</a>
+						</td>
+					</tr>
+					{%endfor%}		
+				</table>
 			</div>
 			{%endfor%}
 		</div>
